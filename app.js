@@ -6,10 +6,9 @@ let gameArray = ['', '', '', '', '', '', '', '', '']
 let currentPlayer = 'X'
 let continueGame = true 
 
-const playerOneWon = 'Congrats Player one!'
-const playerTwoWon = 'Congrats Player two!'
-const tie = 'Draw! Nobody wins? You both win?' 
-
+let playerOneWon = 'Congrats Player one!'
+let playerTwoWon = 'Congrats Player two!'
+let tie = 'Draw! Nobody wins? You both win?' 
 
 const win = [
   [0, 1, 2],
@@ -37,9 +36,9 @@ if (a === '' || b === '' || c === '') {
     break;
   }
 }
-
+console.log(currentPlayer)
 if (gameWon) {
-  declareWinner(currentPlayer === 'X' ? playerOneWon : playerTwoWon); 
+  declareWinner(currentPlayer = 'X' ? playerOneWon : playerTwoWon); 
   continueGame = false;
   return
 }
@@ -53,10 +52,10 @@ function declareWinner() {
         gameInfo.innerText = playerOneWon
     }
     else if (playerTwoWon) {
-        gameInfo.innerText = "playerTwoWon"
+        gameInfo.innerText = playerTwoWon
     }
     else {
-        gameInfo.innerText = "tie"
+        gameInfo.innerText = tie
     }
 }
 
@@ -71,21 +70,27 @@ const playerChoice = (index) => {
   gameArray[index] = currentPlayer
 }
 
-function changePlayer () { 
-  if (currentPlayer = 'X') {
-    currentPlayer = 'O'
-  }
- else if (currentPlayer = 'O') {
-currentPlayer = 'X'}}
+// function changePlayer () { 
+//   if (currentPlayer = 'X') {
+//     currentPlayer = 'O'
+//   }
+//  else if (currentPlayer = 'O') {
+// currentPlayer = 'X'}}
 
 
-const playerMove = (box, index) => {
-  if(isBoxEmpty(box) && continueGame) {
+function playerMove(box, index) {
+  if (isBoxEmpty(box) && continueGame) {
     box.innerText = currentPlayer
     playerChoice(index)
     checkGameResult()
-    changePlayer()
+    console.log(currentPlayer)
 
+    if (currentPlayer = 'X')
+    { currentPlayer = 'O'} 
+    else if (currentPlayer = 'O') {
+      currentPlayer ='X'
+    }
+    
   }
 }
 
@@ -94,9 +99,9 @@ const restart = () => {
   continueGame = true;
 
 
-if (currentPlayer === 'O') {
-  changePlayer();
-}
+// if (currentPlayer === 'O') {
+//   changePlayer();
+// }
 gameBoard.forEach(box => {
   box.innerText = '';
 })
@@ -104,10 +109,10 @@ gameBoard.forEach(box => {
 window.addEventListener('DOMContentLoaded', () => {
 gameBoard.forEach( (box, index) => {
   box.addEventListener('click', () => playerMove(box, index))
-  let currentPlayer = 'O'
+  
   })
 
-  console.log(gameArray)
+  
 
 replay.addEventListener('click', restart)
   ; 
