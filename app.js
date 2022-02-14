@@ -33,7 +33,7 @@ if (a === '' || b === '' || c === '') {
   continue;
 }
   if (a === b && b === c) {
-    let gameWon = true;
+     gameWon = true;
     break;
   }
 }
@@ -48,16 +48,16 @@ if (!gameArray.includes(''))
   declareWinner(tie)
 }
  
-const declareWinner = () => {
-  if (playerOneWon) {
-    gameInfo.innerText = "playerOneWon"
-  }
-  else if (playerTwoWon) {
-    gameInfo.innerText = "playerTwoWon"
-  }
-  else {
-    gameInfo.innerText = "tie"
-  }
+function declareWinner() {
+    if (playerOneWon) {
+        gameInfo.innerText = playerOneWon
+    }
+    else if (playerTwoWon) {
+        gameInfo.innerText = "playerTwoWon"
+    }
+    else {
+        gameInfo.innerText = "tie"
+    }
 }
 
 const isBoxEmpty = (box) => { 
@@ -107,9 +107,9 @@ gameBoard.forEach( (box, index) => {
   let currentPlayer = 'O'
   })
 
-
+  console.log(gameArray)
 
 replay.addEventListener('click', restart)
-  console.log(gameArray); 
+  ; 
 });
 
